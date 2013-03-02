@@ -8,17 +8,21 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
+#import "TableViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Model.sqlite"];
+    
+    TableViewController *controller = [[TableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    self.viewController = controller;
+    
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -44,9 +48,8 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+- (void)applicationWillTerminate:(UIApplication *)application {
+    [MagicalRecord cleanUp];
 }
 
 @end

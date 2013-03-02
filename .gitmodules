@@ -1,0 +1,6 @@
+[submodule "iOS/DemoiOS/Vendor/AFNetworking"]
+	path = iOS/DemoiOS/Vendor/AFNetworking
+	url = https://github.com/AFNetworking/AFNetworking.git
+[submodule "iOS/DemoiOS/Vendor/MagicalRecord"]
+	path = iOS/DemoiOS/Vendor/MagicalRecord
+	url = https://github.com/magicalpanda/MagicalRecord.git
